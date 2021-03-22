@@ -1,0 +1,10 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: adminserver
+  cloud:
+    nacos:
+      discovery:
+        group: spring-cloud
+        server-addr: 192.168.50.140:8848

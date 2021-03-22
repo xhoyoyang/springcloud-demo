@@ -1,0 +1,36 @@
+server:
+  port: 0
+spring:
+  application:
+    name: userservice
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.50.148:3306/springcloud-demo?serverTimezone=Asia/Shanghai&useUnicode=true&usessl=false&characterEncoding=utf8
+    username: root
+    password: 123456
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.50.148:8848
+        group: spring-cloud
+        ip: localhost
+  kafka:
+    bootstrap-servers: 192.158.50.148:9092,192.168.50.148:9093
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      group-id: springcooud
+      enable-auto-commit: true
+      auto-commit-interval: 3000
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      auto-offset-reset: latest
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
